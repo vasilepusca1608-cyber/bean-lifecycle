@@ -10,20 +10,15 @@ import pixel.academy.setter_injection.common.Chef;
 public class DemoController {
 
     private Chef myChef;
-    private Chef secondChef;
+
     //constructor injection
     @Autowired
-    public DemoController(@Qualifier("frenchChef") Chef theChef,
-                          @Qualifier("frenchChef") Chef theSecondChef) {
-        System.out.println("In constructor: " + getClass().getSimpleName());
+    public DemoController(@Qualifier("frenchChef") Chef theChef) {
+
         myChef = theChef;
-        secondChef =theSecondChef;
+        System.out.println("In constructor: " + getClass().getSimpleName());
     }
 
-    @GetMapping("/check")
-    public String check() {
-        return "Comparing beans: myChef == secondChef, " + (myChef == secondChef);
-    }
     //setter injection
 //
 //    @Autowired
